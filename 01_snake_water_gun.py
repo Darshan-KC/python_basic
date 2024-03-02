@@ -73,7 +73,8 @@ def output(result,user,computer):
         print("!!!  COMPUTER WON THE GAME   !!!")
         print(f"You choose {user} and computer choose {computer}")
         return
-    
+ 
+# main code    
 cmptr = random.randint(0,2)
 computer=computer_choice(cmptr)
 user=user_choice()
