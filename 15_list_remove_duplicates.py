@@ -4,11 +4,18 @@
 
 # Write two different functions to do this - one using a loop and constructing a list, and another using sets.
 
-list = [1, 2, 4, 1, 2 , 9, 4,5, 6]
-list1 = list()
+list0 = [1, 2, 4, 1, 2 , 9, 4,5, 6]
+
 # using loop 
-for x in list:
+list1 = list()
+for x in list0:
     if(x in list1):
         continue
     list1.append(x)
+list1.sort()
 print(list1)
+
+# using set 
+tem = set(list0)
+list0 = list(tem)
+print(list0)
