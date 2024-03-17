@@ -6,10 +6,14 @@
 #   Michele is name My
 # shown back to me.
 
+
+# Logic function 
 def reverse(sentence :str)->str:
-    return sentence[::-1]
+    tem = word.split(' ')
+    return (' ').join(tem[::-1])
 
 word = input("Enter a string : ")
 print("The enter word is {}".format(word))
+
 
 print("The word in backward order is ",reverse(word))
