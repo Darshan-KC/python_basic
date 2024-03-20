@@ -12,10 +12,13 @@
 # Ask the user what size game board they want to draw, and draw it for them to the screen using Python’s print statement.
 
 def draw(n):
-    print(" --- "*n)
+    print(" ",end="")
+    print("--- "*n)
     for i in range(n):
-        print("|   |"*n)
-        print(" --- "*n)
+        print("|",end="")
+        print("   |"*n)
+        print(" ",end="")
+        print("--- "*n)
 
 if __name__ == "__main__":
     try:
@@ -23,5 +26,4 @@ if __name__ == "__main__":
         draw(size)
     except:
         print("Invalid input.")
-    draw()
     
