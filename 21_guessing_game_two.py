@@ -7,14 +7,28 @@
 import random
 def welcome():
     print("\t##########\t WELCOME TO THE GUESSING GAME \t##########")
-    print("\t******************************************************\n")
+    print("\t******************************************************")
+    print("\t You can help computer guess the number by giving hints. Around 5 more, 5 less than.\n")
     
 def compare():
-    pass
+    # pass
+    print(guess)
+
+def user():
+    res = input("Help the computer guessing the number : ")
 
 def computer(min,max):
     return random.randint(min,max)
 
+def response():
+    res = input("Give hint")
+    
+    pass
+
 if __name__ == "__main__":
     welcome()
+    guess = int(input("Enter the guess number : "))
+    
     compare()
+    tem = computer(0,100)
+    # compare(tem)
