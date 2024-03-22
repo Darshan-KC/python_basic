@@ -5,30 +5,67 @@
 # As the writer of this program, you will have to choose how your program will strategically guess. A naive strategy can be to simply start the guessing at 1, and keep going (2, 3, 4, etc.) until you hit the number. But that’s not an optimal guessing strategy. An alternate strategy might be to guess 50 (right in the middle of the range), and then increase / decrease by 1 as needed. After you’ve written the program, try to find the optimal strategy! (We’ll talk about what is the optimal one next week with the solution.)
 
 import random
+import re
+
 def welcome():
     print("\t##########\t WELCOME TO THE GUESSING GAME \t##########")
     print("\t******************************************************")
     print("\t You can help computer guess the number by giving hints. Around 5 more, 5 less than.\n")
     
-def compare():
-    # pass
-    print(guess)
+def compare(com,usr):
+    if(com == usr):
+        return 1
+    else:
+        return 0
 
 def user():
     res = input("Help the computer guessing the number : ")
 
 def computer(min,max):
-    return random.randint(min,max)
+    g =  random.randint(min,max)
+    print("Computer guess {}".format(g))
+    return g
 
 def response():
-    res = input("Give hint")
-    
-    pass
+    print("Give hint like. 40 more than your guess or 10 less than your guess")
+    res = input("Give hint : ")
+    if "more" in res or "great" in res or "big" in res:
+        op = '+'
+    else:
+        op = '-'
+    numbers = re.findall(r'\d+', res)
+    print(numbers," and operator is ",op)
+    # return [int(num) for num in numbers]
+    return {
+        'num':int(numbers[0]),
+        'op':op
+    }
 
+def output(count):
+    print("\n\t#############\t THANKS FOR GUIDING\t##############")
+    print("\t#### Computer guess the correct number in {} attempts. ####")
 if __name__ == "__main__":
     welcome()
     guess = int(input("Enter the guess number : "))
     
-    compare()
-    tem = computer(0,100)
+    print("\n\t#######\t GAME BEGINS. \t########")
+    min = 0
+    max = 100
+    tem = computer(min,max)
+    count = 1
+    while(True):
+        result = compare(tem,guess)
+        if(result):
+            break
+        res = response()
+        num = res.get('num')
+        op = res.get('op')
+        if(op == '-'):
+            max = max - num
+        else:
+            min = min + num
+        tem = computer(min,max)
+        count +=1
+    # compare()
     # compare(tem)
+    print("Total guess ",count)
