@@ -34,7 +34,7 @@ def response():
     else:
         op = '-'
     numbers = re.findall(r'\d+', res)
-    print(numbers," and operator is ",op)
+    # print(numbers," and operator is ",op)
     # return [int(num) for num in numbers]
     return {
         'num':int(numbers[0]),
@@ -43,7 +43,7 @@ def response():
 
 def output(count):
     print("\n\t#############\t THANKS FOR GUIDING\t##############")
-    print("\t#### Computer guess the correct number in {} attempts. ####")
+    print("\t#### Computer guess the correct number in {} attempts. ####".format(count))
 if __name__ == "__main__":
     welcome()
     guess = int(input("Enter the guess number : "))
@@ -61,11 +61,26 @@ if __name__ == "__main__":
         num = res.get('num')
         op = res.get('op')
         if(op == '-'):
-            max = max - num
+            if min < tem - 2*num:
+                min = min + num
+            max = abs(tem - num) 
+               
+            # max = max - num
+            
         else:
-            min = min + num
+            if max > min + 2*num:
+                max = max - num
+            min = tem + num
+            
+            # min = min + num
+        
+        if(min > max):
+            temp = min
+            min = max
+            max = temp
         tem = computer(min,max)
         count +=1
+        print("max = {} and min = {}".format(max,min))
     # compare()
     # compare(tem)
-    print("Total guess ",count)
+    output(count)
