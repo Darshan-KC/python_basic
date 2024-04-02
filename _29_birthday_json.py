@@ -12,16 +12,23 @@ birthday = {
         "gita" : "2003/09/23",
     }
 # json_data = json.dumps(birthday)
-with open("birthday.json","a+") as f:
-    # f.write(json_data)
-    json.dump(birthday,f)
+# with open("birthday.json","w") as f:
+#     # f.write(json_data)
+#     json.dump(birthday,f)
 
 def ReadFromFile(file,name):
-    pass
+    with open(file,'r') as f:
+        data = json.load(f)
+        name = name.lower()
+        result = data.get(name)
+        if(result == None):
+            print("\n{} is not in the file.\n".format(name))
+        else:
+            print("\nThe birthday of {} is on {}.\n".format(name.capitalize(),result))
 def WriteIntoFile(name,data):
     pass
 
-if __name__ == "__main___":
+if __name__ == "__main__":
     while(True):
         print("Enter one of the following options : ")
         print("* Enter 1 to read data from file.")
