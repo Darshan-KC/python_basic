@@ -14,7 +14,7 @@ birthday = {
 # json_data = json.dumps(birthday)
 # with open("birthday.json","w") as f:
 #     # f.write(json_data)
-#     json.dump(birthday,f)
+    # json.dump(birthday,f)
 
 def ReadFromFile(file,name):
     with open(file,'r') as f:
@@ -25,29 +25,58 @@ def ReadFromFile(file,name):
             print("\n{} is not in the file.\n".format(name))
         else:
             print("\nThe birthday of {} is on {}.\n".format(name.capitalize(),result))
-def WriteIntoFile(file,data):
+
+def WriteIntoFile(file):
+    # Reading from the file
     with open(file,"r") as f:
         file_data = json.load(f)
-        
     
+    data = dict()
+    usr_name = input("Enter the name : ")
+    usr_name = usr_name.lower()
+    if(file_data.get(usr_name) != None):
+        print("The birthday with name => {} already exists.\n".format(usr_name.capitalize()))
+        return
+    usr_bday = input("Enter the birthday (y/m/d) : ")
+    data[usr_name] = usr_bday
+    file_data.update(data)
+    
+    # Writing data into the file
+    with open(file,"w") as f:
+        json.dump(file_data,f)
+    
+    print("Data successfully added to the file.\n")
+    
+    
+def readAllData(file):
+    with open(file,"r") as f:
+        file_data = json.load(f)
+    
+    print("\nThe data are : \n")
+    print(file_data)
+    print("\n")
 
 if __name__ == "__main__":
+    file_name = "birthday.json"
     while(True):
         print("Enter one of the following options : ")
         print("* Enter 1 to read data from file.")
         print("* Enter 2 to write data into the file.")
         print("* Enter 3 to exit this.")
+        print("* Enter 4 to read all data from the file.")
         try:
             choice = int(input("Enter your choice : "))
-            if(choice > 3 or choice <1):
+            if(choice > 4 or choice <1):
                 raise("Number out of options.")
             else:
                 if(choice == 3):
                     break
                 elif(choice == 1):
                     name = input("Enter the name of the person you want to get birthday: ")
-                    ReadFromFile("birthday.json",name)
+                    ReadFromFile(file_name,name)
+                elif(choice == 2):
+                    WriteIntoFile(file_name)
                 else:
-                    pass
+                    readAllData(file_name)
         except Exception as e:
             print("Error => ",e)
