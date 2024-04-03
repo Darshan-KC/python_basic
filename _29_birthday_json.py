@@ -25,8 +25,11 @@ def ReadFromFile(file,name):
             print("\n{} is not in the file.\n".format(name))
         else:
             print("\nThe birthday of {} is on {}.\n".format(name.capitalize(),result))
-def WriteIntoFile(name,data):
-    pass
+def WriteIntoFile(file,data):
+    with open(file,"r") as f:
+        file_data = json.load(f)
+        
+    
 
 if __name__ == "__main__":
     while(True):
