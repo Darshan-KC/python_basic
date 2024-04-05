@@ -10,6 +10,11 @@
 
 #import
 from collections import Counter
+import json
+
+def readFromFile(file_name):
+    with open(file_name,'r') as f:
+        data = json.load(f)
 
 if __name__ == "__main__":
     pass
