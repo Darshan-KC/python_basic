@@ -10,3 +10,18 @@
 # print("|   |   |   |")
 # print(" --- --- ---")
 # Hint: Think about a way to refactor this using functions where generating an 8x8 or a 19x19 grid is a single change to a function call!
+
+def display_structure(n):
+    pass
+
+if __name__ == "__main__":
+    while(True):
+        try:
+            n = int(input("Enter the size of the structure: "))
+            break
+        except TypeError as error:
+            print("!!!\t Error : " + error)
+            print("Please enter a valid integer.")
+
+
+    
