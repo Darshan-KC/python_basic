@@ -12,7 +12,10 @@
 # Hint: Think about a way to refactor this using functions where generating an 8x8 or a 19x19 grid is a single change to a function call!
 
 def display_structure(n):
-    pass
+    print(" _ _ _  "*n)
+    for i in range(n):
+        print("|     |"*n)
+    print(" _ _ _  "*n)
 
 if __name__ == "__main__":
     while(True):
