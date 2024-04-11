@@ -1,11 +1,13 @@
 # Generate a random number between 1 and 9 (including 1 and 9). Ask the user to guess the number, then tell them whether they guessed too low, too high, or exactly right.
 import random
 
-print("#############\tWelcome to the number guessing game. \t##############")
 def intro():
-    pass
+    print("#############\tWelcome to the number guessing game. \t##############")
 
-num = random.randint(1,9)
+
+old_num = -1
+
+
 while(True):
     count = 0
     print("Enter one of the following options:")
@@ -15,9 +17,22 @@ while(True):
         choice = int(input("Enter your choice : "))
         if(choice == 2):
             break
+        elif(choice != 1):
+            print("\n!!!Enter the choice either 1 or 2.!!!\n")
+            continue
     except:
         print("!!! Invalid input !!!. Enter correct option")
         continue
+    
+    # computer choice or secret number
+    num = random.randint(1,9)
+    
+    # Checking whether new random number is equal to old number or not
+    while(old_num == num):
+        num = random.randint(1,9)
+    old_num = num
+    
+    # Logic of guessing game
     while(True):
         try:
             man = int(input("Enter your guess (1 to 9) : "))
