@@ -21,8 +21,8 @@ while(True):
     while(True):
         try:
             man = int(input("Enter your guess (1 to 9) : "))
-            count += 1
             if(man >0 and man < 10):
+                count += 1
                 if(man == num):
                     print("\n******* CONGRATULATIONS! You guess the correct number in {} attemps. ***********\n".format(count))
                     break
