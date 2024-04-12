@@ -32,7 +32,7 @@ def check(game):
         if game[i][0] == game[i][1] and game[i][0] == game[i][2]:
             if not(game[i][1] == 0):
                 return [1,game[i][1]]
-        elif game[0][i] == game[1][i] and game[0][i] == game[0][2]:
+        elif game[0][i] == game[1][i] and game[0][i] == game[2][i]:
             if not game[1][i] == 0:
                 return [1,game[1][i]]
     return [0]
