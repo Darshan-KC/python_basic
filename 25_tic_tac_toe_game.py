@@ -48,6 +48,9 @@ def usr1(l):
                 if(u%3 == 0):
                     i -=1
                     j = 2
+                if(l[i][j] == 2):
+                    print("!!! Position {} already occupied by {}.".format(u,numtosym(l[i][j],i,j)))
+                    continue
                 l[i][j] = 1
                 break
             else:
@@ -66,6 +69,9 @@ def usr2(l):
                 if(u%3 == 0):
                     i -=1
                     j = 2
+                if(l[i][j] == 1):
+                    print("!!! Position {} already occupied by {}.".format(u,numtosym(l[i][j],i,j)))
+                    continue
                 l[i][j] = 2 
                 break
             else:
