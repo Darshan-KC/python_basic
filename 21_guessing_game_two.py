@@ -57,9 +57,13 @@ if __name__ == "__main__":
         result = compare(tem,guess)
         if(result):
             break
-        res = response()
-        num = res.get('num')
-        op = res.get('op')
+        try:
+            res = response()
+            num = res.get('num')
+            op = res.get('op')
+        except:
+            print("!!!\t Invalid hint.\t!!!")
+            continue
         if(op == '-'):
             if min < tem - 2*num:
                 min = min + num
