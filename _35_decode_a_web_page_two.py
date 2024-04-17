@@ -5,3 +5,5 @@
 # (Hint: The post here describes in detail how to use the BeautifulSoup and requests libraries through the solution of the exercise posted here.)
 
 # This will just print the full text of the article to the screen. It will not make it easy to read
+import requests
+from bs4 import BeautifulSoup
