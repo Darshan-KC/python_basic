@@ -8,6 +8,13 @@
 import requests
 from bs4 import BeautifulSoup
 
+def get_article_text(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+    paragraphs = soup.find_all('p')
+    article_text = '\n'.join([p.get_text() for p in paragraphs])
+    return article_text
+
 base_url = "https://www.vanityfair.com/style/society/2014/06/monica-lewinsky-humiliation-culture"
 urls = [
     "https://www.vanityfair.com/style/fashion",
@@ -16,4 +23,8 @@ urls = [
     "https://www.vanityfair.com/style/beauty",
     "https://www.vanityfair.com/style/royals",
 ]
-response = requests.get(base_url)
+# response = requests.get(base_url)
+
+# Get and print the full text of the article
+for url in urls:
+    print(get_article_text(url))
