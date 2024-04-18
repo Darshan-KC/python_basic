@@ -9,4 +9,11 @@ import requests
 from bs4 import BeautifulSoup
 
 base_url = "https://www.vanityfair.com/style/society/2014/06/monica-lewinsky-humiliation-culture"
+urls = [
+    "https://www.vanityfair.com/style/fashion",
+    "https://www.vanityfair.com/style/style",
+    "https://www.vanityfair.com/style/celebrity",
+    "https://www.vanityfair.com/style/beauty",
+    "https://www.vanityfair.com/style/royals",
+]
 response = requests.get(base_url)
